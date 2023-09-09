@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SignUpForm() {
+export default function SignUpForm({setToken}) {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -22,6 +22,7 @@ export default function SignUpForm() {
               })
             const result = await response.json();
             console.log(result);
+            setToken(result.token);
         } catch (error) {
             setError(error.message);
         }
